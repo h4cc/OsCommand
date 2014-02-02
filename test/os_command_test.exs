@@ -2,7 +2,11 @@ defmodule OsCommandTest do
   use ExUnit.Case
 
   test "run true wihtout callback" do
-    OsCommand.execute('true')
+    File.rm("foo")
+    OsCommand.execute('touch foo')
+    :timer.sleep(100)
+    assert File.exists?("foo")
+    File.rm("foo")
   end
 
   test "run true" do
