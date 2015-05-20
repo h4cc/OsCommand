@@ -4,7 +4,7 @@ defmodule OsCommand.Mixfile do
   def project do
     [ app: :os_command,
       version: "0.0.1",
-      elixir: "~> 0.12.2",
+      elixir: "~> 1.0.0",
       deps: deps ]
   end
 

@@ -9,7 +9,7 @@ defmodule OsCommand do
         Run a given command in the background.
     """
     def execute(command) when is_list(command) do
-        Process.spawn_link(fn -> 
+        spawn_link(fn -> 
             run(command)
         end)
         # Explicitly not returning the PID of spawned process.
@@ -23,7 +23,7 @@ defmodule OsCommand do
         The first argument given to the callback will always be a tuple.
     """
     def execute(command, callback) when is_list(command) and is_function(callback) do
-        Process.spawn_link(fn -> 
+        spawn_link(fn -> 
             port_id = run(command)
             handler(port_id, callback)
         end)
